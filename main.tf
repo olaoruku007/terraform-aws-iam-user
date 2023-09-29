@@ -8,18 +8,8 @@ resource "aws_iam_user" "admin-user" {
 
 resource "aws_iam_policy" "admin-user" {
   name   = "AdminUsers"
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "*",
-            "Resource": "*"
-        }
-    ]
-} 
-EOF
+  policy = file("admin-policy.json")
+
 }
 
 resource "aws_iam_policy_attachment" "AdminUser-access-policy" {
